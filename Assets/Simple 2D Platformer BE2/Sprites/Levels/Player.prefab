@@ -172,4 +172,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jump: 300
+  jump: 5
+  groundedY: 0
+  ledgeGrab:
+    ray1: 0
+    ray2: 0
+    rayStart: 0
+    rayLength: 0
+    target: {x: 0, y: 0, z: 0}
+    speed: 0
+  animations:
+    goLeft: {fileID: 0}
+    goRight: {fileID: 0}
+    jumpLeft: {fileID: 0}
+    jumpRight: {fileID: 0}
+    die: {fileID: 0}
