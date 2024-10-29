@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Simple 2D Platformer BE2/Sprites/Levels/Level 3.unity
     guid: d56faac9ba42ee643af554cb6ada2315
+  - enabled: 1
+    path: Assets/Simple 2D Platformer BE2/Sprites/Levels/Level 4.unity
+    guid: 8283754c72e6a9d41b7ac458cbbd676f
+  - enabled: 1
+    path: Assets/Simple 2D Platformer BE2/Sprites/Levels/Level 5.unity
+    guid: 29bf98f595428254f96ddb88ff42044f
   m_configObjects: {}
