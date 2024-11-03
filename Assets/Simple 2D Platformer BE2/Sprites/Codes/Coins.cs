@@ -1,29 +1,29 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
-    public Text MyscoreText;
-    private int ScoreNumber;
+    [SerializeField] private int value;
+    private bool hasTriggered;
 
-    // Start is called before the first frame update
-    void Start()
+    private CoinsManager coinsManager;
+
+    private void Start()
     {
-        ScoreNumber = 0;
-        MyscoreText.text = "Score: " + ScoreNumber;
+        coinsManager = coinsManager.Instance;
     }
 
-    // Update is called once per frame
-    private void OnTriggerEnter2D(Collider2D Coin)
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Coin.tag == "Coin")
+        if (collision.CompareTag("Player") && hasTriggered)
         {
-            ScoreNumber++;
-            Destroy(Coin.gameObject);//destroy when the player touches the coin
-            MyscoreText.text = "Score: " + ScoreNumber;
+            hasTriggered = true;
+            coinsManager.ChangeCoins(value);
+            Destroy(gameObject);
         }
     }
-
 }
+    
