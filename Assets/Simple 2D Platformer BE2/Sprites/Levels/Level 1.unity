@@ -321,7 +321,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6688814374789585862, guid: 81b31ae516b192545ae1845bdb597be5, type: 3}
   m_PrefabInstance: {fileID: 8800299568398193643}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &645856792
+--- !u!114 &645856794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,10 +330,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 645856789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8567c7610f81cb4ca4c008081b60588, type: 3}
+  m_Script: {fileID: 11500000, guid: fe2040394cb6c8a4da9e3ec17181ca74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsDisplay: {fileID: 689891795}
+  coinText: {fileID: 689891795}
+  currentCoins: 0
 --- !u!1 &666986578
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,8 +437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 355.75, y: 229.46}
-  m_SizeDelta: {x: 11.5, y: 50}
+  m_AnchoredPosition: {x: 254.5, y: 238.72}
+  m_SizeDelta: {x: 24.8977, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689891795
 MonoBehaviour:
@@ -1825,7 +1826,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5091817571880049305, guid: 81b31ae516b192545ae1845bdb597be5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 645856792}
+      addedObject: {fileID: 645856794}
   m_SourcePrefab: {fileID: 100100000, guid: 81b31ae516b192545ae1845bdb597be5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
