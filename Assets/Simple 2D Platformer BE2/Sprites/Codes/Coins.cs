@@ -11,14 +11,12 @@ public class ScoreScript : MonoBehaviour
 
     private void Start()
     {
-        coinsManager = coinsManager.Instance;
+        CoinsManager instance = coinsManager.Instance;
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && hasTriggered)
+        if (collision.CompareTag("Player") && !hasTriggered)
         {
             hasTriggered = true;
             coinsManager.ChangeCoins(value);
@@ -26,4 +24,3 @@ public class ScoreScript : MonoBehaviour
         }
     }
 }
-    

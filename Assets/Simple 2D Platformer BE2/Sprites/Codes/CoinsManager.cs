@@ -12,7 +12,7 @@ public class CoinsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance)
+        if (!instance)
         {
             instance = this;
         }
@@ -25,6 +25,6 @@ public class CoinsManager : MonoBehaviour
 
     public void ChangeCoins(int amount)
     {
-        coins = amount;
+        coins += amount;
     }
 }
