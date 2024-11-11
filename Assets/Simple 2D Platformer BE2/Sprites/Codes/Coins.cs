@@ -1,29 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-    public int value;
+    [SerializeField] private int value;
+    private bool hasTriggerd;
 
+    private CoinsCounter coinsManager;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
+        coinsManager = CoinsCounter.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !hasTriggerd)
         {
-            CoinsCounter.Instance.IncreaseCoins(value);
+            hasTriggerd = true;
+            coinsManager.ChangeCoins(value);
             Destroy(gameObject);
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -7,22 +5,24 @@ public class CoinsCounter : MonoBehaviour
 {
     public static CoinsCounter Instance;
 
-    public TMP_Text coinText;
-    public int currentCoins = 0;
+    private int coins;
+    [SerializeField] private TMP_Text coinsDisplay;
 
-    void Awake()
+    private void Awake()
     {
-        Instance = this;
+        if (!Instance)
+        {
+            Instance = this;
+        }
     }
 
-    void Start()
+    private void OnGUI()
     {
-        coinText.text = "COINS: " + currentCoins.ToString();
+        coinsDisplay.text = coins.ToString();
     }
 
-    public void IncreaseCoins(int v)
+    public void ChangeCoins(int amount)
     {
-        currentCoins += v;
-        coinText.text = "COINS: " + currentCoins.ToString();
+        coins += amount;
     }
 }
