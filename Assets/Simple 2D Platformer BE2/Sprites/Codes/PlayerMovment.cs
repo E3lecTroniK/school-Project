@@ -1,60 +1,54 @@
 using UnityEngine;
 
-public class PlayerMovments : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    float h; // Get Input Horizontal Axis
-    public float speed;
-    Rigidbody2D rb;
-    public float JumpForce;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
+    private float horizontal;
+    private float speed = 8f;
+    private float jumpingPower = 16f;
+    private bool isFacingRight = true;
 
-    bool doubleJump;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
 
-    private void Awake()
+    void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        horizontal = Input.GetAxisRaw("Horizontal");
 
-    private void Update()
-    {
-        h = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.Space)) // Jump
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            if (isGrounded())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, JumpForce);
-                doubleJump = true;
-            }
-            else if (doubleJump)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, JumpForce * 0.7f);
-                doubleJump = false;
-            }
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
         Flip();
     }
 
-       private void FixedUpdate()
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
 
-        {
-            rb.velocity = new Vector2(h * speed, rb.velocity.y); // left - Right Movment
-        }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
 
-        bool isGrounded() // GroundCheck
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
-            return Physics2D.OverlapBox(groundCheck.position, new Vector2(1.7f, 0.24f), 0, groundLayer);
-        }
-
-        void Flip() // Face Direction
-        {
-            if (h < -0.01f) transform.localScale = new Vector3(-1, 1, 1); if (h > 0.01f)
-                if (h > 0.01f) transform.localScale = new Vector3(1, 1, 1);
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
-    
+}
 
-    
-              
+
+
