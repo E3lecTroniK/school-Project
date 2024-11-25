@@ -28,12 +28,12 @@ public class SceneController : MonoBehaviour
 
     public void Nextlevel()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadScene(SceneManager.GetCurrentscene);
     }
 
 }
